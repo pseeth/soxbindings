@@ -1,0 +1,393 @@
+sox -D -V2 --combine concatenate -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 0.5 tests/data/input.wav -v 2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine concatenate -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine merge -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix-power -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine multiply -v 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 1 -r 44100 -c 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 2 -r 44100 -c 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 1 -r 44100 -c 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 2 -r 44100 -c 1 tests/data/input.wav -v 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 1 -r 44100 -c 1 tests/data/input.wav tests/data/output.wav
+sox -D -V2 --combine mix -v 1 -r 44100 -c 1 tests/data/input.wav -v 2 -r 44100 -c 1 tests/data/input.wav tests/data/output.wav
+sox tests/data/input.wav tests/data/output.wav
+sox tests/data/input.wav tests/data/output.wav
+sox tests/data/empty.wav -n stat
+sox tests/data/input.wav -n stat
+sox tests/data/silence.wav -n stat
+sox tests/data/input.wav -n stat
+sox tests/data/silence.wav -n stat
+sox tests/data/silence.wav -n stat
+sox -D -V2 tests/data/input.wav tests/data/output.wav
+sox -V2 tests/data/input.wav tests/data/output.wav
+sox -D -G -V2 tests/data/input.wav tests/data/output.wav
+sox -D --multi-threaded -V2 tests/data/input.wav tests/data/output.wav
+sox -D --replay-gain track -V2 tests/data/input.wav tests/data/output.wav
+sox -D -V0 tests/data/input.wav tests/data/output.wav
+sox -D -V2 -b 32 tests/data/input.wav tests/data/output.wav
+sox -D -V2 -c 2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 -e signed-integer tests/data/input.wav tests/data/output.wav
+sox -D -V2 -t wav tests/data/input.wav tests/data/output.wav
+sox -D -V2 --ignore-length tests/data/input.wav tests/data/output.wav
+sox -D -V2 -r 44100.000000 tests/data/input.wav tests/data/output.wav
+sox -D -V2 -r 1000.000000 tests/data/input.wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav --comment asdf tests/data/output.wav
+sox -D -V2 tests/data/input.wav -b 32 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -c 2 tests/data/output.wav
+sox -D -V2 tests/data/input.wav --add-comment asdf tests/data/output.wav
+sox -D -V2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav -e signed-integer tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav -n
+sox -D -V2 tests/data/input.wav -r 44100.000000 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -r 1000.000000 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav -b 16 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav -b 32 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav -b 64 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t wav -b 8 tests/data/output.wav
+sox -D -V2 tests/data/input.wav tests/data/output.wav norm
+sox -D -V2 tests/data/input.wav -n
+sox -D -V2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav tests/data/output.wav allpass 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - allpass 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav bandpass -c 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bandpass -c 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav bandpass 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bandpass 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav bandreject 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bandreject 500.000000 2.000000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav bass -20.000000 100.000000 0.500000s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bass -20.000000 100.000000 0.500000s
+sox -D -V2 tests/data/input.wav tests/data/output.wav bend -f 25 -o 16 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bend -f 25 -o 16 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav tests/data/output.wav bend -f 50 -o 16 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bend -f 50 -o 16 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav tests/data/output.wav bend -f 25 -o 31 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - bend -f 25 -o 31 0.350000,180.000000,0.250000 0.150000,740.000000,0.530000 0.000000,-540.000000,0.300000
+sox -D -V2 tests/data/input.wav tests/data/output.wav biquad 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - biquad 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav channels 3
+sox -D -V2 tests/data/input.wav -t raw -c 3 - channels 3
+sox -D -V2 tests/data/input.wav tests/data/output.wav chorus 0.5 0.9 44.873882 0.360783 0.399939 1.595442 -s 48.451462 0.347098 0.337939 1.674184 -s 53.023739 0.309793 0.271838 2.801002 -t
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - chorus 0.5 0.9 44.873882 0.360783 0.399939 1.595442 -s 48.451462 0.347098 0.337939 1.674184 -s 53.023739 0.309793 0.271838 2.801002 -t
+sox -D -V2 tests/data/input.wav tests/data/output.wav chorus 0.5 0.9 50.000000 0.320000 0.250000 2.000000 -t
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - chorus 0.5 0.9 50.000000 0.320000 0.250000 2.000000 -t
+sox -D -V2 tests/data/input.wav tests/data/output.wav contrast 75.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - contrast 75.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 1.000000,0.500000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 1.000000,0.500000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.500000,0.800000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.500000,0.800000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.300000,0.500000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.300000,0.500000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.300000,0.800000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.300000,0.800000 6.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.300000,0.800000 -70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.300000,0.800000 -70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.300000,0.800000 -2.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.300000,0.800000 -2.000000:-70.000000,-70.000000,-60.000000,-20.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav compand 0.300000,0.800000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - compand 0.300000,0.800000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000
+sox -D -V2 tests/data/input.wav -b 8 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -b 16 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t raw -b 16 -
+sox -D -V2 tests/data/input.wav -c 3 tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t raw -c 3 -
+sox -D -V2 tests/data/input.wav tests/data/output.wav
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 -
+sox -D -V2 tests/data/input.wav tests/data/output.wav rate -h 8000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 8000.000000 - rate -h 8000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav dcshift 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - dcshift 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav deemph
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - deemph
+sox -D -V2 tests/data/input.wav tests/data/output.wav delay 1.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - delay 1.000000
+sox -D -V2 tests/data/input4.wav tests/data/output.wav delay 0.000000 1.000000
+sox -D -V2 tests/data/input4.wav -t raw -r 44100.000000 -b 16 -c 2 - delay 0.000000 1.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav channels 2 earwax
+sox -D -V2 tests/data/input.wav -t raw -c 2 - channels 2 earwax
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 0.800000 0.900000 60 0.1 60 1.0
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 0.800000 0.900000 60 0.1 60 1.0
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 0.800000 0.900000 60 0.4
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 0.800000 0.900000 60 0.4
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 0.800000 0.900000 1 0.4 600 0.4
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 0.800000 0.900000 1 0.4 600 0.4
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 1.000000 0.900000 60 0.4
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 1.000000 0.900000 60 0.4
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 0.800000 1.000000 60 0.4
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 0.800000 1.000000 60 0.4
+sox -D -V2 tests/data/input.wav tests/data/output.wav echo 0.800000 0.900000 60 0.4 60 0.4
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echo 0.800000 0.900000 60 0.4 60 0.4
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 0.800000 0.900000 60.000000 0.100000 60.000000 1.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 0.800000 0.900000 60.000000 0.100000 60.000000 1.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 0.800000 0.900000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 0.800000 0.900000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 0.800000 0.900000 1.000000 0.400000 600.000000 0.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 0.800000 0.900000 1.000000 0.400000 600.000000 0.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 1.000000 0.900000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 1.000000 0.900000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 0.800000 1.000000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 0.800000 1.000000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav echos 0.800000 0.900000 60.000000 0.400000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - echos 0.800000 0.900000 60.000000 0.400000 60.000000 0.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav equalizer 500.000000 2.000000q 3.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - equalizer 500.000000 2.000000q 3.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav fade q 0.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - fade q 0.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav fade q 1.200000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - fade q 1.200000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverse fade q 3.000000 reverse
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverse fade q 3.000000 reverse
+sox -D -V2 tests/data/input.wav tests/data/output.wav fade p 1.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - fade p 1.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav fir 0.019500 -0.082000 0.234000 0.891000 -0.145000 0.043000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - fir 0.019500 -0.082000 0.234000 0.891000 -0.145000 0.043000
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 10.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 10.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 0.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 0.000000 0.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 quadratic
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 25.000000 quadratic
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 95.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 71.000000 0.500000 sine 95.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 -95.000000 71.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 71.000000 0.500000 triangle 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 71.000000 0.500000 triangle 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 71.000000 10.000000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 71.000000 10.000000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav flanger 0.000000 2.000000 0.000000 0.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - flanger 0.000000 2.000000 0.000000 0.000000 0.500000 sine 25.000000 linear
+sox -D -V2 tests/data/input.wav tests/data/output.wav gain -B -n 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - gain -B -n 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav gain -n 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - gain -n 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav gain -n 6.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - gain -n 6.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav gain -n -l 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - gain -n -l 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav gain 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - gain 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav highpass -2 1000.000000 0.707000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - highpass -2 1000.000000 0.707000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav highpass -1 1000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - highpass -1 1000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav lowpass -2 1000.000000 0.707000q
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - lowpass -2 1000.000000 0.707000q
+sox -D -V2 tests/data/input.wav tests/data/output.wav lowpass -1 1000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - lowpass -1 1000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav loudness -10.000000 65.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - loudness -10.000000 65.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav loudness 0.000000 65.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - loudness 0.000000 65.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav loudness -10.000000 50.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - loudness -10.000000 50.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.500000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.062500,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.500000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.062500,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 100.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 100.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.001000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.500000 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.001000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.500000 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 3.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000 -1.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 3.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000 -1.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 -47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 -47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 -2.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -5.000000:-47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 -2.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -5.000000:-47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000 1600.000000 0.000625,0.012500 -70.000000,-60.000000,0.000000,-4.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000 1600.000000 0.000625,0.012500 -70.000000,-60.000000,0.000000,-4.000000
+sox -D -V2 tests/data/input.wav -t raw -b 16 -c 1 - noiseprof noise.prof
+sox -D -V2 tests/data/input.wav tests/data/output.wav noisered tests/data/noise.prof 0.700000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - noisered tests/data/noise.prof 0.700000
+sox -D -V2 tests/data/input.wav tests/data/output.wav noisered tests/data/noise.prof 0.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - noisered tests/data/noise.prof 0.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav noisered tests/data/noise.prof 0.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - noisered tests/data/noise.prof 0.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav norm 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - norm 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav norm -3.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - norm -3.000000
+sox -D -V2 tests/data/input4.wav tests/data/output.wav oops
+sox -D -V2 tests/data/input4.wav -t raw -r 44100.000000 -b 16 -c 2 - oops
+sox -D -V2 tests/data/input.wav tests/data/output.wav overdrive 20.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - overdrive 20.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav overdrive 20.000000 20.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - overdrive 20.000000 20.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav overdrive 2.000000 20.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - overdrive 2.000000 20.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pad 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pad 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pad 0.000000 0.200000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pad 0.000000 0.200000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pad 3.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pad 3.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.100000 0.500000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.100000 0.500000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 5.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 5.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.500000 0.740000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.500000 0.740000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 1.000000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 1.000000 3.000000 0.400000 0.500000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -t
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -t
+sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 2.000000 -s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 2.000000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav pitch 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pitch -300.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch -300.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pitch 1300.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch 1300.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav pitch -q 100.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch -q 100.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav rate -h 48000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 48000.000000 - rate -h 48000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav rate -q 44100.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - rate -q 44100.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav rate -h 1000.500000
+sox -D -V2 tests/data/input.wav -t raw -r 1000.500000 - rate -h 1000.500000
+sox -D -V2 tests/data/input4.wav tests/data/output.wav remix -
+sox -D -V2 tests/data/input4.wav -t raw -c 1 - remix -
+sox -D -V2 tests/data/input4.wav tests/data/output.wav remix 1,2 0 1 0
+sox -D -V2 tests/data/input4.wav -t raw -c 4 - remix 1,2 0 1 0
+sox -D -V2 tests/data/input4.wav tests/data/output.wav remix -
+sox -D -V2 tests/data/input4.wav -t raw -c 1 - remix -
+sox -D -V2 tests/data/input4.wav tests/data/output.wav remix 1,2 0 1
+sox -D -V2 tests/data/input4.wav -t raw -c 3 - remix 1,2 0 1
+sox -D -V2 tests/data/input.wav tests/data/output.wav repeat 2
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - repeat 2
+sox -D -V2 tests/data/input.wav tests/data/output.wav repeat 1
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - repeat 1
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 10.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 10.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 50.000000 100.000000 100.000000 10.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 50.000000 100.000000 100.000000 10.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 90.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 90.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 50.000000 10.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 50.000000 10.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 50.000000 100.000000 50.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 50.000000 100.000000 50.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb 50.000000 50.000000 100.000000 100.000000 0.000000 5.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb 50.000000 50.000000 100.000000 100.000000 0.000000 5.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverb -w 50.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverb -w 50.000000 50.000000 100.000000 100.000000 0.000000 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverse
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverse
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence -l 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - silence -l 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - silence 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - silence 1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav reverse silence 1 0.100000 0.100000% reverse
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - reverse silence 1 0.100000 0.100000% reverse
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 2.000000 0.100000% -1 2.000000 0.100000%
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - silence 1 2.000000 0.100000% -1 2.000000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 10.500000% -1 0.100000 10.500000%
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - silence 1 0.100000 10.500000% -1 0.100000 10.500000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 300.400000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 300.400000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 300.400000-1000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 300.400000-1000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 300.400000-1000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 300.400000-1000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 3000.000000-4000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 3000.000000-4000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 4000.000000-3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 4000.000000-3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -p 100.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -p 100.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -p 0.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -p 0.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -p 25.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -p 25.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 60.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 60.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -t 100.000000 3000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -t 100.000000 3000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -3000.000000 -t 100.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -3000.000000 -t 100.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -t 100.000000 3000.000000-4000.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -t 100.000000 3000.000000-4000.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav sinc -a 120.000000 -t 100.000000 3000.000000-4000.000000 -t 200.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - sinc -a 120.000000 -t 100.000000 3000.000000-4000.000000 -t 200.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav speed 1.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - speed 1.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav speed 0.700000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - speed 0.700000
+sox -D -V2 tests/data/input.wav tests/data/output.wav speed 2.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - speed 2.500000
+sox -D -V2 tests/data/input.wav -n channels 1 stat
+sox -D -V2 tests/data/input4.wav -n channels 1 stat
+sox -D -V2 tests/data/input.wav -n channels 1 stat -rms
+sox -D -V2 tests/data/input.wav -n channels 1 stat -s 1073741823.500000
+sox -D -V2 tests/data/input4.wav -t raw -b 16 -c 2 - channels 1 stat -freq
+sox -D -V2 tests/data/input.wav -t raw -b 16 -c 1 - channels 1 stat -freq
+sox -D -V2 tests/data/input.wav -n channels 1 stats
+sox -D -V2 tests/data/input4.wav -n channels 1 stats
+sox -D -V2 tests/data/input4.wav tests/data/output.wav swap
+sox -D -V2 tests/data/input4.wav -t raw -r 44100.000000 -b 16 -c 2 - swap
+sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 1.100000 20.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 1.100000 20.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.200000 20.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.200000 20.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.700000 20.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.700000 20.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.990000 10.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.990000 10.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav tempo -m 1.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo -m 1.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 1.100000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 1.100000
+sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 0.900000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 0.900000
+sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 0.100000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 0.100000
+sox -D -V2 tests/data/input.wav tests/data/output.wav tempo -q 1.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo -q 1.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav treble 20.000000 3000.000000 0.500000s
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - treble 20.000000 3000.000000 0.500000s
+sox -D -V2 tests/data/input.wav tests/data/output.wav tremolo 6.000000 40.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tremolo 6.000000 40.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav trim 5.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - trim 5.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav trim 0.000000 8.500000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - trim 0.000000 8.500000
+sox -D -V2 tests/data/input.wav tests/data/output.wav norm vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - norm vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav norm reverse vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000 reverse
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - norm reverse vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000 reverse
+sox -D -V2 tests/data/input.wav tests/data/output.wav vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vad -t 7.000000 -T 0.250000 -s 1.000000 -g 0.250000 -p 0.000000
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 0.800000 amplitude
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 0.800000 amplitude
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 0.800000 dB
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 0.800000 dB
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 0.800000 power
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 0.800000 power
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 1.800000 amplitude 0.020000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 1.800000 amplitude 0.020000
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 0.800000 amplitude
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 0.800000 amplitude
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol -2.000000 dB
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol -2.000000 dB
+sox -D -V2 tests/data/input.wav tests/data/output.wav vol 2.000000 dB 0.050000
+sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - vol 2.000000 dB 0.050000
