@@ -1,7 +1,9 @@
-python_example
+SoxBindings
 ==============
 
-An example project built with [pybind11](https://github.com/pybind/pybind11).
+Python bindings for SoX. An attempt to bind a subset of the capabilities of
+the SoX command line utility but in Python via bindings for speed. This 
+avoids costly exec calls when using augmentations in SoX.
 
 Installation
 ------------
@@ -9,13 +11,13 @@ Installation
 **On Unix (Linux, OS X)**
 
  - clone this repository
- - `pip install ./python_example`
+ - `pip install ./soxbindings`
 
 **On Windows (Requires Visual Studio 2015)**
 
  - For Python 3.5:
      - clone this repository
-     - `pip install ./python_example`
+     - `pip install ./soxbindings`
  - For earlier versions of Python, including Python 2.7:
 
    Pybind11 requires a C++11 compliant compiler (i.e. Visual Studio 2015 on
@@ -27,9 +29,9 @@ Installation
      - `"%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x64`
      - `set DISTUTILS_USE_SDK=1`
      - `set MSSdk=1`
-     - `pip install ./python_example`
+     - `pip install ./soxbindings`
 
-   Note that this requires the user building `python_example` to have registry edition
+   Note that this requires the user building `soxbindings` to have registry edition
    rights on the machine, to be able to run the `vcvarsall.bat` script.
 
 
@@ -70,14 +72,5 @@ formats please refer to the Sphinx manual:
 License
 -------
 
-pybind11 is provided under a BSD-style license that can be found in the LICENSE
-file. By using, distributing, or contributing to this project, you agree to the
-terms and conditions of this license.
+soxbindings are under an MIT license.
 
-Test call
----------
-
-```python
-import python_example
-python_example.add(1, 2)
-```
