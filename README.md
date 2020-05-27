@@ -3,7 +3,8 @@ SoxBindings
 
 Python bindings for SoX. An attempt to bind a subset of the capabilities of
 the SoX command line utility but in Python via bindings for speed. This 
-avoids costly exec calls when using augmentations in SoX.
+avoids costly exec calls when using augmentations in SoX. This is a
+work in progress! Help welcome.
 
 Installation
 ------------
