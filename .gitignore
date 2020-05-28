@@ -131,3 +131,5 @@ dmypy.json
 *.o
 output.wav
 noise.prof
+failed.txt
+failed_.txt

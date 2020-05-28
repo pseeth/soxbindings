@@ -1,40 +1,5 @@
-sox -D -V2 tests/data/input.wav tests/data/output.wav pitch 0.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch 0.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav pitch -300.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch -300.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav pitch 1300.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch 1300.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav pitch -q 100.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - pitch -q 100.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 1.100000 20.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 1.100000 20.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.200000 20.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.200000 20.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.700000 20.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.700000 20.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav stretch 0.990000 10.000000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - stretch 0.990000 10.000000
-sox -D -V2 tests/data/input.wav tests/data/output.wav tempo -m 1.500000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo -m 1.500000
-sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 1.100000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 1.100000
-sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 0.900000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 0.900000
-sox -D -V2 tests/data/input.wav tests/data/output.wav tempo 0.100000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo 0.100000
-sox -D -V2 tests/data/input.wav tests/data/output.wav tempo -q 1.500000
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - tempo -q 1.500000
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.100000 0.500000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.100000 0.500000 -s
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 5.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 5.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.500000 0.740000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.500000 0.740000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 1.000000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 1.000000 3.000000 0.400000 0.500000 -s
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -t
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 0.500000 -t
-sox -D -V2 tests/data/input.wav tests/data/output.wav phaser 0.800000 0.740000 3.000000 0.400000 2.000000 -s
-sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - phaser 0.800000 0.740000 3.000000 0.400000 2.000000 -s
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence -l 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000% -1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 2.000000 0.100000% -1 2.000000 0.100000%
+sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 10.500000% -1 0.100000 10.500000%

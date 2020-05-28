@@ -208,7 +208,7 @@ std::tuple<int, int, py::array> build_flow_effects(
   if(target_encoding == nullptr) {
     target_encoding = &empty_encoding;
     target_encoding->encoding = SOX_ENCODING_SIGN2; // Sample format
-    target_encoding->bits_per_sample = input_signal->precision; // Bits per sample
+    target_encoding->bits_per_sample = target_signal->precision; // Bits per sample
     target_encoding->compression = 0.0; // Compression factor
     target_encoding->reverse_bytes = sox_option_default; // Should bytes be reversed
     target_encoding->reverse_nibbles = sox_option_default; // Should nibbles be reversed
