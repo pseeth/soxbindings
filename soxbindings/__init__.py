@@ -12,3 +12,4 @@ from .effects import (
 )
 
 from .sox import sox
+from .transform import Transformer

@@ -54,7 +54,7 @@ def test_write(input_file):
         assert np.allclose(sox_data, sf_data)
         assert np.allclose(sox_data, sox_data_2)
 
-with open('tests/subset.txt', 'r') as f:
+with open('tests/commands.txt', 'r') as f:
     COMMANDS = f.readlines()
     COMMANDS = [c.rstrip() for c in COMMANDS]
 

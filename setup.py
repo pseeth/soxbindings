@@ -113,7 +113,10 @@ setup(
     description='Python bindings for sox.',
     long_description='',
     ext_modules=ext_modules,
-    setup_requires=['pybind11>=2.5.0'],
+    setup_requires=[
+        'pybind11>=2.5.0',
+        'git+https://github.com/rabitt/pysox.git',
+    ],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
 )

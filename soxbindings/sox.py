@@ -58,7 +58,8 @@ def sox(args, input_audio=None, sample_rate_in=None):
     Args:
         args (str): Command line arguments to sox.
     """
-    args = args.split()
+    if isinstance(args, str):
+        args = args.split()
     if args[0] == 'sox':
         args.pop(0)
     available_fx = get_available_effects()
