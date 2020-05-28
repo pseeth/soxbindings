@@ -54,7 +54,7 @@ def test_write(input_file):
         assert np.allclose(sox_data, sf_data)
         assert np.allclose(sox_data, sox_data_2)
 
-with open('tests/commands.txt', 'r') as f:
+with open('tests/subset.txt', 'r') as f:
     COMMANDS = f.readlines()
     COMMANDS = [c.rstrip() for c in COMMANDS]
 
@@ -70,7 +70,6 @@ def test_against_sox(command):
             cmd_sox_data = cmd_sox_data[:min_length]
             py_sox_data = py_sox_data[:min_length]
             assert np.max((cmd_sox_data - py_sox_data) ** 2) < thresh
-            #assert np.allclose(cmd_sox_data, py_sox_data)
         except Exception as e:
             with open('tests/failed_.txt', 'a+') as f:
                 f.write(command + '\n')

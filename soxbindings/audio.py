@@ -21,6 +21,16 @@ def write(audio_path, data, sample_rate,
     si.precision = precision
     file_type = None
 
+    if encoding_info is None:
+        encoding_info = _soxbindings.sox_encodinginfo_t()
+        encoding_info.encoding = _soxbindings.SOX_ENCODING_SIGN2
+        encoding_info.bits_per_sample = precision
+        encoding_info.compression = 0.0
+        encoding_info.reverse_bytes = _soxbindings.sox_option_default
+        encoding_info.reverse_nibbles = _soxbindings.sox_option_default
+        encoding_info.reverse_bits = _soxbindings.sox_option_default
+        encoding_info.opposite_endian = _soxbindings.sox_false
+
     data = data * (1 << 31)
     data = data.astype(np.int32)
 

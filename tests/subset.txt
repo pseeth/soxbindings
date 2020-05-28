@@ -1,5 +1,1 @@
-sox -D -V2 tests/data/input.wav tests/data/output.wav silence -l 1 0.100000 0.100000% -1 0.100000 0.100000%
-sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000% -1 0.100000 0.100000%
-sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 0.100000%
-sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 2.000000 0.100000% -1 2.000000 0.100000%
-sox -D -V2 tests/data/input.wav tests/data/output.wav silence 1 0.100000 10.500000% -1 0.100000 10.500000%
+sox -D -V2 -b 32 tests/data/input.wav tests/data/output.wav

@@ -206,7 +206,10 @@ def sox(args, input_audio=None, sample_rate_in=None):
         sox_effect = SoxEffect()
         sox_effect.effect_name = "no_effects"
         sox_effect.effect_args = [""]
-        sox_effects_chain.append(sox_effect)    
+        sox_effects_chain.append(sox_effect)  
+      
+    if out_precision is None:
+        out_precision = in_precision
     
     if input_audio is not None:
         output_audio, rate = build_flow_effects(
@@ -221,5 +224,5 @@ def sox(args, input_audio=None, sample_rate_in=None):
         )
 
         if output_file != PIPE_CHAR:
-            write(output_file, output_audio, rate)
+            write(output_file, output_audio, rate, out_precision)
         return output_audio, rate
