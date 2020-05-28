@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 *.o
-
+output.wav
 noise.prof

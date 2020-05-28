@@ -12,6 +12,9 @@ like '-' are done with numpy arrays instead.
 """
 
 import numpy as np
+import re
+
+
 from . import (
     read, 
     write, 
@@ -33,7 +36,9 @@ GLOBAL_OPTIONS = [
     '-V3',
 ]
 
-def sox(args):
+
+
+def sox(args, input_audio=None, sample_rate_in=None):
     """
     Main entry point into sox. Parses the arguments.
 
@@ -90,7 +95,10 @@ def sox(args):
     input_files = files[:-1]
     output_file = files[-1]
 
-    input_audio = [read(f) for f in input_files]
+    if input_audio is None:
+        input_audio = [read(f) for f in input_files]
+    else:
+        input_audio = [(input_audio, sample_rate_in)]
 
     fx_group = []
     fx_groups = []
@@ -108,7 +116,17 @@ def sox(args):
     for fx in fx_groups:
         sox_effect = SoxEffect()
         sox_effect.effect_name = fx[0]
-        sox_effect.effect_args = fx[1:]
+        
+        parsed_fx_args = fx[1:]
+
+        if fx[0] == "mcompand":
+            parsed_fx_args = ' '.join(parsed_fx_args)
+            parsed_fx_args = re.split('(\S+ \S+) (\S+ )', parsed_fx_args)[1:]
+            parsed_fx_args = [x.rstrip() for x in parsed_fx_args]
+
+        sox_effect.effect_args = parsed_fx_args
+        if not sox_effect.effect_args:
+            sox_effect.effect_args = [""]
         sox_effects_chain.append(sox_effect)
 
         # if it's pitch, then we need to add rate too
@@ -123,7 +141,7 @@ def sox(args):
         sox_effect.effect_name = "no_effects"
         sox_effect.effect_args = [""]
         sox_effects_chain.append(sox_effect)
-
+    
     if input_audio:
         output_audio, rate = build_flow_effects(
             input_audio[0][0],

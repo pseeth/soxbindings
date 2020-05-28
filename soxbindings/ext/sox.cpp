@@ -219,12 +219,11 @@ std::tuple<int, int, py::array> build_flow_effects(
   // check for rate or channels effect and change the output signalinfo accordingly
   for (SoxEffect effect : effects) {
     if (effect.effect_name == "rate") {
-      target_signal->rate = std::stod(effect.effect_args[0]);
+      target_signal->rate = std::stod(effect.effect_args.back());
     } else if (effect.effect_name == "channels") {
       target_signal->channels = std::stoi(effect.effect_args[0]);
     }
   }
-
   // create interm_signal for effects, intermediate steps change this in-place
   sox_signalinfo_t interm_signal = input->signal;
 

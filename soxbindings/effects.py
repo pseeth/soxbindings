@@ -1,4 +1,5 @@
 import numpy as np
+from contextlib import contextmanager
 
 MAX_NUM_EFFECTS_ARGS = 20
 
@@ -14,12 +15,19 @@ def quit_sox():
     from . import _soxbindings
     return _soxbindings.sox_quit()
 
+@contextmanager
+def sox_context_manager():
+    try:
+        yield initialize_sox()
+    finally:
+        # Code to release resource, e.g.:
+        quit_sox()
+
+@sox_context_manager()
 def build_flow_effects(input_data, sample_rate, sox_effects_chain, 
                        precision=16, target_signal_info=None, 
                        target_encoding=None):
     from . import _soxbindings
-    initialize_sox()
-
     input_signal_info = _soxbindings.sox_signalinfo_t()
     input_signal_info.rate = float(sample_rate)
     input_signal_info.channels = (
@@ -39,8 +47,6 @@ def build_flow_effects(input_data, sample_rate, sox_effects_chain,
     )
     data = data.reshape(-1, num_channels)
     data = data / (1 << 31)
-
-    quit_sox()
     return data, sample_rate
 
 def SoxEffect():
