@@ -115,7 +115,9 @@ setup(
     ext_modules=ext_modules,
     setup_requires=[
         'pybind11>=2.5.0',
-        'git+https://github.com/rabitt/pysox.git',
+    ],
+    install_requires=[
+        "sox @ https://github.com/rabitt/pysox/master/tarball"
     ],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
