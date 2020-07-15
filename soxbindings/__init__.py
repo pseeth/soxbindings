@@ -11,5 +11,5 @@ from .effects import (
     build_flow_effects,
 )
 
-from .sox import sox
+from .sox_cli import sox
 from .transform import Transformer

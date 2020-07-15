@@ -113,6 +113,7 @@ setup(
     description='Python bindings for sox.',
     long_description='',
     ext_modules=ext_modules,
+    packages=setuptools.find_packages(),
     setup_requires=[
         'pybind11>=2.5.0',
     ],

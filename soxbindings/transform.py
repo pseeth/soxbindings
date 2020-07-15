@@ -1,7 +1,10 @@
 from sox import Transformer as BaseTransformer
+from sox import file_info
 from sox.transform import ENCODINGS_MAPPING
+
 from sox.log import logger
-from .sox import sox
+from .sox_cli import sox
+from .audio import get_info
 import numpy as np
 
 class Transformer(BaseTransformer):
@@ -85,7 +88,7 @@ class Transformer(BaseTransformer):
             encoding = None
             if input_filepath is not None:
                 file_info.validate_input_file(input_filepath)
-                channels_in = file_info.channels(input_filepath)
+                channels_in = get_info(input_filepath)[0].channels
             elif input_array is not None:
                 if not isinstance(input_array, np.ndarray):
                     raise TypeError("input_array must be a numpy array or None")
