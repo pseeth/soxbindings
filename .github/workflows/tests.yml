@@ -22,4 +22,5 @@ jobs:
           conda-channels: anaconda, conda-forge
       - run: conda install -c conda-forge sox
       - run: pip install -e .
+      - run: pip install -r extra_requirements.txt
       - run: python -m pytest .
