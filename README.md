@@ -6,19 +6,34 @@ the SoX command line utility but in Python via bindings for speed. This
 avoids costly exec calls when using augmentations in SoX. This is a
 work in progress! Help welcome.
 
-Installation from source
-------------------------
-
 soxbindings only supports Unix systems (Linux and OSX), due to how
 one builds sox. A related library (torchaudio) has similar problems:
 https://github.com/pytorch/audio/issues/425.
+
+Install from pip
+----------------
+
+If on MacOS or Linux, just do:
+
+`pip install soxbindings`
+
+If on Windows, it's not supported but you *could* install sox from source, 
+and then link libsox and get everything working possibly. If you do and figure
+out an automated way to do it using `cibuildwheel`, please put in a PR adding
+Windows support!
+
+Installation from source
+------------------------
 
 **On Unix (Linux, OS X) using Anaconda**
 
  - clone this repository
  - Make a conda environment
  - `conda install -c conda-forge sox`
- - If on Linux: `conda install gcc_linux-64 gxx_linux-64`
+ - If on Linux: 
+    - Option 1: `conda install gcc_linux-64 gxx_linux-64`
+    - Option 2: `sudo apt-get install sox libsox-dev`
+    - Option 3: build and install sox from source (e.g. as in `.github/workflows/build_install_sox_centos.sh`).
  - `pip install -e .`
 
 Run the tests to make sure everything works:
@@ -133,9 +148,8 @@ pip install -U --index-url https://test.pypi.org/simple/ --extra-index-url https
 Then upload it to the regular PyPi server:
 
 ```
-
+twine upload dist/*
 ```
-
 
 
 License
