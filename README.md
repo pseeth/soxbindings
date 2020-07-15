@@ -38,7 +38,7 @@ Installation from source
 
 Run the tests to make sure everything works:
 
-```
+```bash
 pip install -r extra_requirements.txt
 python -m pytest .
 ```
@@ -59,7 +59,7 @@ Note that `Combiner` classes in pysox are NOT supported.
 
 If you have a script that works with pysox, like so:
 
-```
+```python
 import sox
 # create transformer
 tfm = sox.Transformer()
@@ -83,7 +83,7 @@ tfm.effects_log
 
 Then, all you have to do is change the import:
 
-```
+```python
 import soxbindings as sox
 ```
 
@@ -102,7 +102,7 @@ https://github.com/pseeth/soxbindings/actions/runs/169544837
 Download the artifact zip, then do the following steps from the root of the
 soxbindings repo:
 
-```
+```bash
 unzip [/path/to/artifact.zip]
 # clear out dist
 rm -rf dist/
