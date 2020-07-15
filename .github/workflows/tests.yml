@@ -21,9 +21,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           conda-channels: anaconda, conda-forge
       - run: conda install -c conda-forge sox
-      - if: matrix.os == 'ubuntu-latest'
-          run: |
-            conda install gcc_linux-64 gxx_linux-64
+      - run:   |
+         if [ "$RUNNER_OS" == "Linux" ]; then
+              conda install gcc_linux-64 gxx_linux-64
+         fi
       - run: pip install -e .
       - run: pip install -r extra_requirements.txt
       - run: python -m pytest .
