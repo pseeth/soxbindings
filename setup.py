@@ -3,7 +3,7 @@ from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
 
-__version__ = '0.0.1'
+__version__ = '1.0.0'
 
 
 class get_pybind_include(object):
@@ -103,6 +103,8 @@ class BuildExt(build_ext):
             ext.extra_link_args = link_opts
         build_ext.build_extensions(self)
 
+with open('README.md') as f:
+    long_description = f.read()
 
 setup(
     name='soxbindings',
@@ -111,7 +113,7 @@ setup(
     author_email='prem@u.northwestern.edu',
     url='https://github.com/pseeth/soxbindings',
     description='Python bindings for sox.',
-    long_description='',
+    long_description=long_description,
     ext_modules=ext_modules,
     packages=setuptools.find_packages(),
     setup_requires=[

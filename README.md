@@ -83,11 +83,60 @@ an artifact. For example:
 
 https://github.com/pseeth/soxbindings/actions/runs/169544837
 
-Download the artifact zip, then do the following steps:
+Download the artifact zip, then do the following steps from the root of the
+soxbindings repo:
 
 ```
-unzip [/path/to/artifact.zip] 
+unzip [/path/to/artifact.zip]
+# clear out dist
+rm -rf dist/
+# create source distribution
+python setup.py sdist
+cp -r /path/to/artifact/* dist/twin
 ```
+
+The dist folder should look something like:
+
+```
+dist
+├── soxbindings-0.0.1-cp35-cp35m-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-cp35-cp35m-manylinux2010_i686.whl
+├── soxbindings-0.0.1-cp35-cp35m-manylinux2010_x86_64.whl
+├── soxbindings-0.0.1-cp36-cp36m-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-cp36-cp36m-manylinux2010_i686.whl
+├── soxbindings-0.0.1-cp36-cp36m-manylinux2010_x86_64.whl
+├── soxbindings-0.0.1-cp37-cp37m-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-cp37-cp37m-manylinux2010_i686.whl
+├── soxbindings-0.0.1-cp37-cp37m-manylinux2010_x86_64.whl
+├── soxbindings-0.0.1-cp38-cp38-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-cp38-cp38-manylinux2010_i686.whl
+├── soxbindings-0.0.1-cp38-cp38-manylinux2010_x86_64.whl
+├── soxbindings-0.0.1-pp27-pypy_73-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-pp27-pypy_73-manylinux2010_x86_64.whl
+├── soxbindings-0.0.1-pp36-pypy36_pp73-macosx_10_9_x86_64.whl
+├── soxbindings-0.0.1-pp36-pypy36_pp73-manylinux2010_x86_64.whl
+└── soxbindings-0.0.1.tar.gz
+```
+
+Upload it to the test server first (requires a version bump):
+
+```
+twine upload --repository testpypi dist/*
+```
+
+Make sure you can pip install it on both Linux and OSX:
+
+```
+pip install -U --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple -U soxbindings
+```
+
+Then upload it to the regular PyPi server:
+
+```
+
+```
+
+
 
 License
 -------
