@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-latest]
         python-version: [3.8]
     name: Python ${{ matrix.python-version }} example
     steps:
@@ -26,8 +26,9 @@ jobs:
               sudo apt-get update
               sudo apt-get install -y libsox-dev sox
          fi
+      - run: pip install cibuildwheel==1.5.2
       - run: pip install -e .
-      - run: python setup.py sdist bdist_wheel
+      - run: python -m cibuildwheel --output-dir wheelhouse
       - uses: actions/upload-artifact@v2
         with:
-          path: ./dist/*
+          path: ./wheelhouse/*.whl
