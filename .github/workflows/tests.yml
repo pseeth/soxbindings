@@ -24,8 +24,8 @@ jobs:
       - run:   |
          if [ "$RUNNER_OS" == "Linux" ]; then
               conda install gcc_linux-64 gxx_linux-64
+              which $CC
          fi
-      - run: which $CC
       - run: pip install -e .
       - run: pip install -r extra_requirements.txt
       - run: python -m pytest .
