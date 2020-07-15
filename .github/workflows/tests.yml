@@ -23,7 +23,7 @@ jobs:
       - run: conda install -c conda-forge sox
       - run:   |
          if [ "$RUNNER_OS" == "Linux" ]; then
-              conda install gcc_linux-64 gxx_linux-64
+              apt-get install libsox-dev sox
          fi
       - run: python setup.py install
       - run: pip install -e .
