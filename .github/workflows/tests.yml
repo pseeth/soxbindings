@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.6, 3.7, 3.8]
     name: Python ${{ matrix.python-version }} example
     steps:
@@ -26,7 +26,6 @@ jobs:
               sudo apt-get update
               sudo apt-get install -y libsox-dev sox
          fi
-      - run: python setup.py install
       - run: pip install -e .
       - run: pip install -r extra_requirements.txt
       - run: python -m pytest .
