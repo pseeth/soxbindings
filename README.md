@@ -39,6 +39,7 @@ Installation from source
 Run the tests to make sure everything works:
 
 ```
+pip install -r extra_requirements.txt
 python -m pytest .
 ```
 
@@ -107,7 +108,7 @@ unzip [/path/to/artifact.zip]
 rm -rf dist/
 # create source distribution
 python setup.py sdist
-cp -r /path/to/artifact/* dist/twin
+cp -r [/path/to/artifact]/* dist/
 ```
 
 The dist folder should look something like:
@@ -145,7 +146,8 @@ Make sure you can pip install it on both Linux and OSX:
 pip install -U --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple -U soxbindings
 ```
 
-Then upload it to the regular PyPi server:
+Use the demo script included in this repo to try it out. 
+Finally, upload it to the regular PyPi server:
 
 ```
 twine upload dist/*
