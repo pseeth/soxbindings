@@ -1,0 +1,35 @@
+name: Build wheels
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build_wheels:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: [3.6, 3.7, 3.8]
+    name: Python ${{ matrix.python-version }} example
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup conda
+        uses: s-weigand/setup-conda@v1
+        with:
+          update-conda: true
+          python-version: ${{ matrix.python-version }}
+          conda-channels: anaconda, conda-forge
+      - run: conda install -c conda-forge sox
+      - run:   |
+         if [ "$RUNNER_OS" == "Linux" ]; then
+              sudo apt-get update
+              sudo apt-get install -y libsox-dev sox
+         fi
+      - run: pip install cibuildwheel==1.5.2
+      - run: pip install -e .
+      - run: python -m cibuildwheel --output-dir wheelhouse
+
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./wheelhouse/*.whl
