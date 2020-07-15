@@ -18,8 +18,7 @@ https://github.com/pytorch/audio/issues/425.
  - clone this repository
  - Make a conda environment
  - `conda install -c conda-forge sox`
- - If on Linux: `conda install gcc_linux-64`
- - If on Linux: `conda install gxx_linux-64`
+ - If on Linux: `conda install gcc_linux-64 gxx_linux-64`
  - `pip install -e .`
 
 Run the tests to make sure everything works:
