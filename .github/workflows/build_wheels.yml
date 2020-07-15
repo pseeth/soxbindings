@@ -6,6 +6,8 @@ on:
 
 jobs:
   build_wheels:
+    env:
+      CIBW_SKIP: cp27-*
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
