@@ -74,6 +74,21 @@ import soxbindings as sox
 and everything should work, but be faster because of the direct bindings
 to libsox!
 
+Deploying to PyPI
+-----------------
+
+The Github action workflow "Build wheels" gets run every time there is a commit
+to master. When it's done, the wheels for OSX and Linux are created and place in
+an artifact. For example:
+
+https://github.com/pseeth/soxbindings/actions/runs/169544837
+
+Download the artifact zip, then do the following steps:
+
+```
+unzip [/path/to/artifact.zip] 
+```
+
 License
 -------
 
