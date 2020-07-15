@@ -96,7 +96,7 @@ def sox(args, input_audio=None, sample_rate_in=None):
     # check for combine
     if '--combine' in io_args:
         raise NotImplementedError("--combine is not implemented!")
-
+    
     group = []
     groups = []
     for i, flag in enumerate(flags):

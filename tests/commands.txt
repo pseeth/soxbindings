@@ -187,7 +187,7 @@ sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000
 sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 -2.000000:-47.000000,-40.000000,-34.000000,-34.000000,-17.000000,-33.000000,0.000000,0.000000 1600.000000 0.000625,0.012500 -5.000000:-47.000000,-40.000000,-34.000000,-34.000000,-15.000000,-33.000000,0.000000,0.000000
 sox -D -V2 tests/data/input.wav tests/data/output.wav mcompand 0.005000,0.100000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000 1600.000000 0.000625,0.012500 -70.000000,-60.000000,0.000000,-4.000000
 sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - mcompand 0.005000,0.100000 6.000000:-70.000000,-60.000000,-60.000000,-20.000000,-40.000000,-40.000000,0.000000,-4.000000 1600.000000 0.000625,0.012500 -70.000000,-60.000000,0.000000,-4.000000
-sox -D -V2 tests/data/input.wav -t raw -b 16 -c 1 - noiseprof noise.prof
+sox -D -V2 tests/data/input.wav -t raw -b 16 -c 1 - noiseprof tests/data/noise.prof
 sox -D -V2 tests/data/input.wav tests/data/output.wav noisered tests/data/noise.prof 0.700000
 sox -D -V2 tests/data/input.wav -t raw -r 44100.000000 -b 16 -c 1 - noisered tests/data/noise.prof 0.700000
 sox -D -V2 tests/data/input.wav tests/data/output.wav noisered tests/data/noise.prof 0.500000

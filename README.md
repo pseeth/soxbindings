@@ -9,53 +9,25 @@ work in progress! Help welcome.
 Installation
 ------------
 
-**On Unix (Linux, OS X)**
+soxbindings only supports Unix systems (Linux and OSX), due to how
+one builds sox. A related library (torchaudio) has similar problems:
+https://github.com/pytorch/audio/issues/425.
+
+**On Unix (Linux, OS X) using Anaconda**
 
  - clone this repository
- - `pip install ./soxbindings`
+ - Make a conda environment
+ - `conda install -c conda-forge sox`
+ - If on Linux: `conda install gcc_linux-64`
+ - If on Linux: `conda install gxx_linux-64`
+ - `pip install -e .`
 
-**On Windows (Requires Visual Studio 2015)**
+Run the tests to make sure everything works:
 
- - For Python 3.5:
-     - clone this repository
-     - `pip install ./soxbindings`
- - For earlier versions of Python, including Python 2.7:
-
-   Pybind11 requires a C++11 compliant compiler (i.e. Visual Studio 2015 on
-   Windows). Running a regular `pip install` command will detect the version
-   of the compiler used to build Python and attempt to build the extension
-   with it. We must force the use of Visual Studio 2015.
-
-     - clone this repository
-     - `"%VS140COMNTOOLS%\..\..\VC\vcvarsall.bat" x64`
-     - `set DISTUTILS_USE_SDK=1`
-     - `set MSSdk=1`
-     - `pip install ./soxbindings`
-
-   Note that this requires the user building `soxbindings` to have registry edition
-   rights on the machine, to be able to run the `vcvarsall.bat` script.
-
-
-Windows runtime requirements
-----------------------------
-
-On Windows, the Visual C++ 2015 redistributable packages are a runtime
-requirement for this project. It can be found [here](https://www.microsoft.com/en-us/download/details.aspx?id=48145).
-
-If you use the Anaconda python distribution, you may require the Visual Studio
-runtime as a platform-dependent runtime requirement for you package:
-
-```yaml
-requirements:
-  build:
-    - python
-    - setuptools
-    - pybind11
-
-  run:
-   - python
-   - vs2015_runtime  # [win]
 ```
+python -m pytest .
+```
+
 
 
 Building the documentation

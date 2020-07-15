@@ -117,7 +117,7 @@ setup(
         'pybind11>=2.5.0',
     ],
     install_requires=[
-        "sox @ https://github.com/rabitt/pysox/master/tarball"
+        "sox==1.4.0b0"
     ],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,

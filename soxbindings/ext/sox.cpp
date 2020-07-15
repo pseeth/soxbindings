@@ -179,13 +179,25 @@ std::tuple<int, int, py::array> build_flow_effects(
 
   // open input
   
+#ifdef __APPLE__
+  char tmp_in_name[] = "/tmp/fileXXXXXX.wav";
+  int tmp_in_fd = mkstemp(tmp_in_name);
+  close(tmp_in_fd);
+
+  write_audio_file(tmp_in_name, input_data, input_signal, NULL, NULL);
+  sox_format_t* input = sox_open_read(tmp_in_name, nullptr, nullptr, nullptr);
+
+#else
   std::vector<sox_sample_t> input_buffer(input_signal->length);
+
   const sox_sample_t* data_ptr = static_cast<const sox_sample_t*>(input_data.data());
   std::copy(data_ptr, data_ptr + input_signal->length, input_buffer.begin());
 
   size_t buffer_size = sizeof(input_buffer[0]) * input_buffer.size();
+
   sox_format_t* input = sox_open_mem_read(input_buffer.data(), buffer_size, 
                                           input_signal, NULL, "s32");
+#endif
   if (input == nullptr) {
     throw std::runtime_error("Error reading audio data.");
   }
@@ -229,6 +241,7 @@ std::tuple<int, int, py::array> build_flow_effects(
 
   // According to Mozilla Deepspeech sox_open_memstream_write doesn't work
   // with OSX
+  
   char tmp_name[] = "/tmp/fileXXXXXX";
   int tmp_fd = mkstemp(tmp_name);
   close(tmp_fd);
