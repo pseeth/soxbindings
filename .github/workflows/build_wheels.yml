@@ -26,10 +26,8 @@ jobs:
               sudo apt-get update
               sudo apt-get install -y libsox-dev sox
          fi
-      - run: pip install cibuildwheel==1.5.2
       - run: pip install -e .
-      - run: python -m cibuildwheel --output-dir wheelhouse
-
+      - run: python setup.py sdist bdist_wheel
       - uses: actions/upload-artifact@v2
         with:
-          path: ./wheelhouse/*.whl
+          path: ./dist/*
