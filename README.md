@@ -1,6 +1,10 @@
 SoxBindings
 ==============
 
+[![Downloads](https://pepy.tech/badge/soxbindings)](https://pepy.tech/project/soxbindings)
+![Tests](https://github.com/pseeth/soxbindings/workflows/Run%20tests/badge.svg)
+![Wheels built](https://github.com/pseeth/soxbindings/workflows/Build%20wheels/badge.svg)
+
 Python bindings for SoX. An attempt to bind a subset of the capabilities of
 the SoX command line utility but in Python via bindings for speed. This 
 avoids costly exec calls when using augmentations in SoX. This is a
