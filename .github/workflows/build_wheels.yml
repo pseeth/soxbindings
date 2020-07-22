@@ -7,7 +7,6 @@ on:
 jobs:
   build_wheels:
     env:
-      CIBW_SKIP: cp27-*
       CIBW_BEFORE_BUILD_LINUX: bash .github/workflows/build_install_sox_centos.sh
     runs-on: ${{ matrix.os }}
     strategy:
