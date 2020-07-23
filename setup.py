@@ -3,7 +3,7 @@ from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 
 class get_pybind_include(object):
@@ -120,7 +120,7 @@ setup(
         'pybind11>=2.5.0',
     ],
     install_requires=[
-        "sox==1.4.0b0"
+        "sox>=1.4.0"
     ],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
