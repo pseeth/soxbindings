@@ -31,10 +31,11 @@ class Transformer(BaseTransformer):
             args.extend(extra_args)
 
         output_audio, sample_rate_out = sox(args, input_array, sample_rate_in)
-        return 0, output_audio, 0
+        return output_audio, sample_rate_out
 
     def build_array(self, input_filepath=None, input_array=None,
                     sample_rate_in=None, extra_args=None):
-        _, output_audio, _ = self.build(input_filepath=input_filepath, output_filepath='-', 
-            input_array=input_array, sample_rate_in=sample_rate_in, extra_args=extra_args)
+        output_audio, sample_rate_out = self.build(input_filepath=input_filepath, 
+            output_filepath='-', input_array=input_array, sample_rate_in=sample_rate_in, 
+            extra_args=extra_args)
         return output_audio
