@@ -27,6 +27,12 @@ class Transformer(BaseTransformer):
     def build(self, input_filepath=None, output_filepath=None,
               input_array=None, sample_rate_in=None,
               extra_args=None, return_output=False):
+        
+        if input_filepath is not None:
+            channels = get_info(input_filepath)[0].channels
+            self.set_input_format(
+                channels=channels
+            )
         input_format, input_filepath = self._parse_inputs(
             input_filepath, input_array, sample_rate_in
         )
