@@ -72,26 +72,26 @@ def sox(args, input_audio=None, sample_rate_in=None):
     io_args = args[:fx_idx]
     fx_args = args[fx_idx:]
     flags = []
-    parsed = []
-
-    for i, io_arg in enumerate(io_args):
-        if io_arg not in parsed:
-            if io_arg != PIPE_CHAR:
-                if io_arg.startswith('-'):
-                    _flag = [io_arg]
-                    if (
-                        i < len(io_args)-1 and 
-                        not io_args[i+1].startswith('-')
-                        and io_arg not in GLOBAL_OPTIONS
-                        and io_arg not in IGNORED_OPTIONS
-                    ):
-                        _flag.append(io_args[i+1])
-                    parsed.extend(_flag)
-                    flags.append(tuple(_flag))
-                else:
-                    flags.append(('file', io_arg))
+    i = 0
+    while (i < len(io_args)):
+        io_arg = io_args[i]
+        if io_arg != PIPE_CHAR:
+            if io_arg.startswith('-'):
+                _flag = [io_arg]
+                if (
+                    i < len(io_args)-1 and 
+                    not io_args[i+1].startswith('-')
+                    and io_arg not in GLOBAL_OPTIONS
+                    and io_arg not in IGNORED_OPTIONS
+                ):
+                    _flag.append(io_args[i+1])
+                    i += 1
+                flags.append(tuple(_flag))
             else:
                 flags.append(('file', io_arg))
+        else:
+            flags.append(('file', io_arg))
+        i += 1
     
     # check for combine
     if '--combine' in io_args:
@@ -122,13 +122,10 @@ def sox(args, input_audio=None, sample_rate_in=None):
     # figure out how to modify each file according
     # to the flags.
     in_channels = None
-    in_precision = 16
+    in_precision = 32
     out_channels = None
     sample_rate_out = None
     out_precision = None
-
-    if input_audio is None:
-        input_audio, sample_rate_in = read(input_file)
 
     for flag in groups[0]:
         if flag[0] == '-c':
@@ -137,20 +134,24 @@ def sox(args, input_audio=None, sample_rate_in=None):
             in_precision = int(flag[1])
         if flag[0] == '-r':
             sample_rate_in = float(flag[1])
+
+    if input_audio is None:
+        input_audio, sample_rate_in = read(input_file)
+        read_channels = input_audio.shape[-1]
+        if in_channels is None:
+            in_channels = read_channels
+        elif in_channels != read_channels:
+            input_audio = input_audio.reshape(-1, in_channels)
     
     sox_effects_chain = []
+    add_rate = False
+
     for flag in groups[1]:
         if flag[0] == '-r':
-            sox_effect = SoxEffect()
-            sox_effect.effect_name = "rate"
-            sox_effect.effect_args = [flag[1]]
-            sox_effects_chain.append(sox_effect)
             sample_rate_out = float(flag[1])
+            add_rate = True
         if flag[0] == '-c':
-            sox_effect = SoxEffect()
-            sox_effect.effect_name = "channels"
-            sox_effect.effect_args = [flag[1]]
-            sox_effects_chain.append(sox_effect)
+            fx_args.extend(['channels', flag[1]])
             out_channels = int(flag[1])
         if flag[0] == '-b':
             out_precision = int(flag[1])
@@ -166,7 +167,6 @@ def sox(args, input_audio=None, sample_rate_in=None):
         
     if fx_group:
         fx_groups.append(fx_group)
-
     current_sample_rate = sample_rate_in
 
     for fx in fx_groups:
@@ -185,12 +185,10 @@ def sox(args, input_audio=None, sample_rate_in=None):
             sox_effect.effect_args = [""]
         sox_effects_chain.append(sox_effect)
 
-        # if it's pitch, then we need to add rate too
+        # if it's pitch, then we need to add rate at the end of the chain
         if fx[0] == "pitch" or fx[0] == "speed":
-            sox_effect = SoxEffect()
-            sox_effect.effect_name = "rate"
-            sox_effect.effect_args = [str(current_sample_rate)]
-            sox_effects_chain.append(sox_effect)
+            add_rate = True
+            sample_rate_out = current_sample_rate
         
         if fx[0] == "channels":
             out_channels = int(fx[1])
@@ -201,7 +199,18 @@ def sox(args, input_audio=None, sample_rate_in=None):
         if fx[0] == "remix":
             out_channels = len(fx) - 1
         if fx[0] == "reverb":
-            out_channels = 2
+            # if reverb, add channels effect if out_channels is None
+            if out_channels is None:
+                sox_effect = SoxEffect()
+                sox_effect.effect_name = "channels"
+                sox_effect.effect_args = [str(in_channels)]
+                sox_effects_chain.append(sox_effect)
+    
+    if add_rate:
+        sox_effect = SoxEffect()
+        sox_effect.effect_name = "rate"
+        sox_effect.effect_args = [str(sample_rate_out)]
+        sox_effects_chain.append(sox_effect)
     
     if len(sox_effects_chain) == 0:
         sox_effect = SoxEffect()
@@ -223,7 +232,6 @@ def sox(args, input_audio=None, sample_rate_in=None):
             out_precision=out_precision,
             sample_rate_out=sample_rate_out
         )
-
         if output_file != PIPE_CHAR:
             write(output_file, output_audio, rate, out_precision)
         return output_audio, rate

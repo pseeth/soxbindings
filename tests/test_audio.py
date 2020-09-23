@@ -23,6 +23,7 @@ def sox(args):
         out, err = process_handle.communicate()
         #out = out.decode("utf-8")
         err = err.decode("utf-8")
+        print(err)
 
         status = process_handle.returncode
 
@@ -60,18 +61,20 @@ with open('tests/commands.txt', 'r') as f:
 
 @pytest.mark.parametrize("command", COMMANDS)
 def test_against_sox(command):
-    status, out, err = sox(command.split())
-    thresh = 1e-1 if 'reverb' in command or 'silence' in command or 'mcompand' in command else 1e-4
-    if 'output.wav' in command:
-        try:
-            cmd_sox_data, sr = soxbindings.read('tests/data/output.wav')
-            py_sox_data, sr = soxbindings.sox(command)
-            min_length = min(cmd_sox_data.shape[0], py_sox_data.shape[0])
-            cmd_sox_data = cmd_sox_data[:min_length]
-            py_sox_data = py_sox_data[:min_length]
-            assert np.max((cmd_sox_data - py_sox_data) ** 2) < thresh
-        except Exception as e:
-            with open('tests/failed_.txt', 'a+') as f:
-                f.write(command + '\n')
-            raise(e)
+    command = command.replace('V2', 'V3')
+
+    if 'silence' not in command and 'mcompand' not in command:
+        status, out, err = sox(command.split())
+        if 'output.wav' in command:
+            try:
+                cmd_sox_data, sr = soxbindings.read('tests/data/output.wav')
+                py_sox_data, sr = soxbindings.sox(command)
+                min_length = min(cmd_sox_data.shape[0], py_sox_data.shape[0])
+                cmd_sox_data = cmd_sox_data[:min_length]
+                py_sox_data = py_sox_data[:min_length]
+                assert np.allclose(cmd_sox_data, py_sox_data, atol=1e-4)
+            except Exception as e:
+                with open('tests/failed_.txt', 'a+') as f:
+                    f.write(command + '\n')
+                raise(e)
         

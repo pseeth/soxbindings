@@ -29,7 +29,6 @@ class Transformer(BaseTransformer):
             if not isinstance(extra_args, list):
                 raise ValueError("extra_args must be a list.")
             args.extend(extra_args)
-
         output_audio, sample_rate_out = sox(args, input_array, sample_rate_in)
         return output_audio, sample_rate_out
 
