@@ -24,7 +24,6 @@ def sox_context_manager():
         # Code to release resource, e.g.:
         quit_sox()
 
-@sox_context_manager()
 def build_flow_effects(input_data, sample_rate_in, sox_effects_chain, 
                        in_channels=None, in_precision=16, out_channels=None,
                        sample_rate_out=None, out_precision=None):

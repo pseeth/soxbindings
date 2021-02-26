@@ -1,7 +1,9 @@
 from multiprocessing.dummy import Pool as ThreadPool
 import numpy as np
 import soxbindings as sox
+from soxbindings.effects import sox_context_manager
 
+@sox_context_manager()
 def test_multithreading():
     y1 = np.zeros((4000, 1))
     y2 = np.zeros((3000, 1))
