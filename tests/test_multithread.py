@@ -24,4 +24,7 @@ def test_multithreading():
 
     for a1, a2 in zip(single_thread, multi_thread):
         assert np.allclose(a1, a2)
+
+if __name__ == "__main__":
+    test_multithreading()
     
