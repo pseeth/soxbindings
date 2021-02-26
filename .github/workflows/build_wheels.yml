@@ -26,7 +26,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           conda-channels: anaconda, conda-forge
       - run: conda install -c conda-forge sox
-      - run: pip install cibuildwheel==1.5.2
+      - run: pip install cibuildwheel
       - run: python -m cibuildwheel --output-dir wheelhouse
       - uses: actions/upload-artifact@v2
         with:
