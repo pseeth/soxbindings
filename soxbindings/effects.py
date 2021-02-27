@@ -3,6 +3,7 @@ from contextlib import contextmanager
 
 MAX_NUM_EFFECTS_ARGS = 20
 SOX_UNSPEC = 0
+SOX_INITIALIZED = False
 
 def get_available_effects():
     from . import _soxbindings
@@ -17,17 +18,43 @@ def quit_sox():
     return _soxbindings.sox_quit()
 
 @contextmanager
-def sox_context_manager():
+def sox_context():
+    global SOX_INITIALIZED
     try:
-        yield initialize_sox()
+        val = initialize_sox()
+        SOX_INITIALIZED = True
+        yield val
     finally:
         # Code to release resource, e.g.:
         quit_sox()
+        SOX_INITIALIZED = False
 
 def build_flow_effects(input_data, sample_rate_in, sox_effects_chain, 
                        in_channels=None, in_precision=16, out_channels=None,
                        sample_rate_out=None, out_precision=None):
-    from . import _soxbindings
+    global SOX_INITIALIZED
+
+    if not SOX_INITIALIZED:
+        with sox_context():
+            data, sample_rate = _build_flow_effects(
+                input_data, sample_rate_in, sox_effects_chain, 
+                in_channels=in_channels, in_precision=in_precision, 
+                out_channels=out_channels, sample_rate_out=sample_rate_out, 
+                out_precision=out_precision
+            )
+    else:
+        data, sample_rate = _build_flow_effects(
+            input_data, sample_rate_in, sox_effects_chain, 
+            in_channels=in_channels, in_precision=in_precision, 
+            out_channels=out_channels, sample_rate_out=sample_rate_out, 
+            out_precision=out_precision
+        )
+    return data, sample_rate
+
+def _build_flow_effects(input_data, sample_rate_in, sox_effects_chain, 
+                       in_channels=None, in_precision=16, out_channels=None,
+                       sample_rate_out=None, out_precision=None):
+    from . import _soxbindings        
 
     input_signal_info = _soxbindings.sox_signalinfo_t()
     input_signal_info.rate = float(sample_rate_in)

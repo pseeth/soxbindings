@@ -4,7 +4,7 @@ import numpy as np
 import tempfile
 import pytest
 import subprocess
-from soxbindings import sox_context_manager
+from soxbindings import sox_context
 from sox import logger
 
 INPUT_FILES = [
@@ -37,7 +37,6 @@ def sox(args):
         logger.error("TypeError: %s", error_msg)
     return 1, None, None
 
-@sox_context_manager()
 @pytest.mark.parametrize("input_file", INPUT_FILES)
 def test_read(input_file):
     sox_data, sox_rate = soxbindings.read(input_file)
@@ -46,7 +45,6 @@ def test_read(input_file):
     assert np.allclose(sox_data, sf_data)
     assert sox_rate == sf_rate
 
-@sox_context_manager()
 @pytest.mark.parametrize("input_file", INPUT_FILES)
 def test_write(input_file):
     sox_data, sox_rate = soxbindings.read(input_file)
@@ -63,7 +61,6 @@ with open('tests/commands.txt', 'r') as f:
     COMMANDS = f.readlines()
     COMMANDS = [c.rstrip() for c in COMMANDS]
 
-@sox_context_manager()
 @pytest.mark.parametrize("command", COMMANDS)
 def test_against_sox(command):
     command = command.replace('V2', 'V3')
