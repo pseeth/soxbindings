@@ -9,6 +9,7 @@ from .effects import (
     quit_sox,
     SoxEffect,
     build_flow_effects,
+    sox_context
 )
 
 from .sox_cli import sox

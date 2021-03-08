@@ -94,6 +94,68 @@ import soxbindings as sox
 and everything should work, but be faster because of the direct bindings
 to libsox!
 
+Multithreading
+--------------
+
+SoxBindings requires some special care when being used in a multi-threaded program
+(i.e. a TensorFlow data loader). This [issue](https://github.com/pseeth/soxbindings/issues/4) 
+has more discussion. To use SoxBindings in a multi-threaded program, you must use
+the SoxBindings context manager: `soxbindings.sox_context`.
+
+Note below that anything related to SoxBindings is called in the context
+block `with sox.sox_context():`.
+
+
+```python
+import numpy as np
+import soxbindings as sox
+
+y1 = np.zeros((4000, 1))
+y2 = np.zeros((3000, 1))
+
+def do_transform(y):
+   tfm = sox.Transformer()
+   tfm.vol(0.5)
+   y_out = tfm.build_array(input_array=y, sample_rate_in=1000)
+   return y_out
+
+# multithread
+pool = ThreadPool(2)
+with sox.sox_context():
+   multi_thread = pool.map(do_transform, [y1, y2]) 
+   for a1, a2 in zip(single_thread, multi_thread):
+      assert np.allclose(a1, a2)
+```
+
+The other option is to wrap your program into a function, and then decorate
+the function:
+
+```python
+import numpy as np
+import soxbindings as sox
+
+@sox.sox_context()
+def run():
+   y1 = np.zeros((4000, 1))
+   y2 = np.zeros((3000, 1))
+
+   def do_transform(y):
+      tfm = sox.Transformer()
+      tfm.vol(0.5)
+      y_out = tfm.build_array(input_array=y, sample_rate_in=1000)
+      return y_out
+
+   # multithread
+   pool = ThreadPool(2)
+   multi_thread = pool.map(do_transform, [y1, y2]) 
+   for a1, a2 in zip(single_thread, multi_thread):
+      assert np.allclose(a1, a2)
+```
+
+If your program is single-threaded, no changes are needed. SoxBindings
+checks to see if SoX has been initialized already before initializing
+again.
+
 Deploying to PyPI
 -----------------
 

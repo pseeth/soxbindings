@@ -4,6 +4,8 @@ import numpy as np
 import tempfile
 import pytest
 import subprocess
+from soxbindings import sox_context
+from sox import logger
 
 INPUT_FILES = [
     'tests/data/input.wav',
