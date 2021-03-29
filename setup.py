@@ -114,6 +114,7 @@ setup(
     url='https://github.com/pseeth/soxbindings',
     description='Python bindings for sox.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     ext_modules=ext_modules,
     packages=setuptools.find_packages(),
     setup_requires=[
